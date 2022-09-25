@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
 import { Operacao } from '../model/operacao';
+import { OperacoesService } from '../servicos/operacoes.service';
 
 @Component({
   selector: 'app-operacoes',
@@ -8,12 +11,15 @@ import { Operacao } from '../model/operacao';
 })
 export class OperacoesComponent implements OnInit {
 
-  operacoes: Operacao[] = [
-    {_id:"1", categoria:"Despesa", descricao:"Compra Padaria"}
-  ];
-  displayedColumns = ['categoria','descricao']
+  operacoes$: Observable<Operacao[]>;
+  displayedColumns = ['categoria','descricao','valor']
 
-  constructor() { }
+  //operacoesService: OperacoesService;
+
+  constructor(private operacoesService: OperacoesService) {
+    //this.operacoesService = new OperacoesService();
+    this.operacoes$ = this.operacoesService.list();
+  }
 
   ngOnInit(): void {
   }

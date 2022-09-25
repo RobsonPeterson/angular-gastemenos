@@ -1,5 +1,6 @@
 export interface Operacao {
-  _id: string;
+  _id: number;
   categoria: string;
   descricao: string;
+  valor: number;
 }

@@ -1,11 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
-import { MatTableModule } from '@angular/material/table';
 
+import { AppMaterialModule } from '../shared/app-material/app-material.module';
 import { OperacoesRoutingModule } from './operacoes-routing.module';
 import { OperacoesComponent } from './operacoes/operacoes.component';
-import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -14,9 +12,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
   imports: [
     CommonModule,
     OperacoesRoutingModule,
-    MatTableModule,
-    MatCardModule,
-    MatToolbarModule
+    AppMaterialModule
   ]
 })
 export class OperacoesModule { }
