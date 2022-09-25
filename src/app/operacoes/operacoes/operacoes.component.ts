@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { catchError, Observable, of } from 'rxjs';
+import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 
 import { Operacao } from '../model/operacao';
 import { OperacoesService } from '../servicos/operacoes.service';
@@ -12,16 +14,28 @@ import { OperacoesService } from '../servicos/operacoes.service';
 export class OperacoesComponent implements OnInit {
 
   operacoes$: Observable<Operacao[]>;
-  displayedColumns = ['categoria','descricao','valor']
+  displayedColumns = ['categoria', 'descricao', 'valor']
 
-  //operacoesService: OperacoesService;
+  constructor(
+    private operacoesService: OperacoesService,
+    public dialog: MatDialog
+    ) {
+    this.operacoes$ = this.operacoesService.list()
+      .pipe(
+        catchError(error => {
+          this.onError('Erro ao carregar operações.')
+          return of([])
+        })
+      );
+  }
 
-  constructor(private operacoesService: OperacoesService) {
-    //this.operacoesService = new OperacoesService();
-    this.operacoes$ = this.operacoesService.list();
+  onError(errorMsg: string) {
+    this.dialog.open(ErrorDialogComponent, {
+      data: errorMsg
+    });
   }
 
   ngOnInit(): void {
+    // TODO document why this method 'ngOnInit' is empty
   }
-
 }

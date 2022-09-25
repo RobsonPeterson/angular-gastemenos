@@ -16,7 +16,6 @@ export class OperacoesService {
     return this.httpClient.get<Operacao[]>(this.API)
     .pipe(
       first(),
-      delay(5000),
       tap(operacoes => console.log(operacoes))
     );
   }
