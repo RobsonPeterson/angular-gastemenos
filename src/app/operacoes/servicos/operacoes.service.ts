@@ -8,7 +8,7 @@ import { delay, first, take, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class OperacoesService {
-  private readonly API = '/assets/operacoes.json';
+  private readonly API = 'api/operacoes';
 
   constructor(private httpClient: HttpClient) { }
 
