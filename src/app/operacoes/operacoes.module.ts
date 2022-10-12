@@ -7,11 +7,13 @@ import { OperacoesRoutingModule } from './operacoes-routing.module';
 import { OperacoesComponent } from './operacoes/operacoes.component';
 import { OperacaoFormComponent } from './operacao-form/operacao-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OperacoesListaComponent } from './operacoes-lista/operacoes-lista.component';
 
 @NgModule({
   declarations: [
     OperacoesComponent,
-    OperacaoFormComponent
+    OperacaoFormComponent,
+    OperacoesListaComponent
   ],
   imports: [
     CommonModule,

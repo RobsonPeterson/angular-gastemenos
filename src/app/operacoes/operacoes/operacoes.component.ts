@@ -44,7 +44,5 @@ export class OperacoesComponent implements OnInit {
 
   onAdd(){
     this.router.navigate(['new'],{relativeTo:this.activeRounte});
-
-
   }
 }

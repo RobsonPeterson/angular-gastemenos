@@ -19,4 +19,8 @@ export class OperacoesService {
       tap(operacoes => console.log(operacoes))
     );
   }
+
+  save(record: Operacao){
+    return this.httpClient.post<Operacao>(this.API, record).pipe(first());
+  }
 }
